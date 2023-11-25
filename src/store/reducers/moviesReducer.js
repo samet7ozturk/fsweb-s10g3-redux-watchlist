@@ -2,7 +2,7 @@ import { movies } from "../../movies";
 
 const initialState = {
   movies: movies,
-  order: 0,
+  sira: 0,
 };
 
 function moviesReducer(state = initialState, action) {
