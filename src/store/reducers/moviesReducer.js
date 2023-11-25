@@ -1,5 +1,5 @@
 import { movies } from "../../movies";
-import { NEXT, PREV } from "../actions/movieAction";
+import { NEXT, PREV, REMOVE_MOV, RECYCLE_MOV } from "../actions/movieAction";
 
 const initialState = {
   movies: movies,
@@ -21,6 +21,13 @@ function moviesReducer(state = initialState, action) {
       } else {
         return { ...state, sira: state.sira - 1, disabledNav: null };
       }
+    case REMOVE_MOV:
+      const remainingMovies = state.movies.filter(
+        (movie) => movie.id !== action.payload.id
+      );
+      return { ...state, movies: remainingMovies };
+    case RECYCLE_MOV:
+      return { ...state, movies: [...state.movies, action.payload] };
     default:
       return state;
   }
