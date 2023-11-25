@@ -3,18 +3,21 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
 
-import { UseSelector, useSelector } from "react-redux";
+import { UseSelector, useDispatch, useSelector } from "react-redux";
+import { NEXT, PREV } from "./store/actions/movieAction";
 
 function App() {
-  const [sira, setSira] = useState(0);
   const favMovies = useSelector((state) => state.favoritesReducer.favMovies);
+  const dispatch = useDispatch;
 
   function oncekiFilm() {
-    setSira(sira - 1);
+    //setSira(sira - 1);
+    dispatch({ type: PREV });
   }
 
   function sonrakiFilm() {
-    setSira(sira + 1);
+    //setSira(sira + 1);
+    dispatch({ type: NEXT });
   }
 
   return (
@@ -38,7 +41,7 @@ function App() {
       </nav>
       <Switch>
         <Route exact path="/">
-          <Movie sira={sira} />
+          <Movie />
 
           <div className="flex gap-3 justify-end py-3">
             <button
