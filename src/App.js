@@ -3,12 +3,12 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
 
-import { UseSelector, useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { NEXT, PREV } from "./store/actions/movieAction";
 
 function App() {
   const favMovies = useSelector((state) => state.favoritesReducer.favMovies);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   function oncekiFilm() {
     //setSira(sira - 1);
